@@ -25,9 +25,16 @@ class WeatherService {
     this.cityName = cityName;
   }
   // TODO: Create fetchLocationData method
-  private async fetchLocationData(query: string) {}
+  private async fetchLocationData(query: string) {
+    const response = await fetch(query);
+    const locationData = await response.json();
+    return locationData;
+  }
   // TODO: Create destructureLocationData method
-  private destructureLocationData(locationData: Coordinates): Coordinates {}
+  private destructureLocationData(locationData: Coordinates): Coordinates {
+    const { lat, lon } = locationData;
+    return { lat, lon };
+  }
   // TODO: Create buildGeocodeQuery method
   private buildGeocodeQuery(): string {}
   // TODO: Create buildWeatherQuery method
@@ -42,7 +49,7 @@ class WeatherService {
   private buildForecastArray(currentWeather: Weather, weatherData: any[]) {}
   // TODO: Complete getWeatherForCity method
   async getWeatherForCity(city: string) {
-    
+
   }
 }
 
