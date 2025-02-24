@@ -41,7 +41,9 @@ class WeatherService {
   // TODO: Complete buildForecastArray method
   private buildForecastArray(currentWeather: Weather, weatherData: any[]) {}
   // TODO: Complete getWeatherForCity method
-  async getWeatherForCity(city: string) {}
+  async getWeatherForCity(city: string) {
+    
+  }
 }
 
 export default new WeatherService();
