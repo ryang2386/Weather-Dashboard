@@ -13,7 +13,15 @@ class City {
 // TODO: Complete the HistoryService class
 class HistoryService {
   // TODO: Define a read method that reads from the searchHistory.json file
-  private async read() {}
+  private async read() {
+    const filePath = './searchHistory.json';
+    try {
+      const data = fs.readFileSync(filePath, 'utf8');
+      return JSON.parse(data);
+    } catch (err) {
+      console.error('Failed to read searchHistory.json', err);
+  }
+}
   // TODO: Define a write method that writes the updated cities array to the searchHistory.json file
   private async write(cities: City[]) {
     const filePath = './searchHistory.json';
