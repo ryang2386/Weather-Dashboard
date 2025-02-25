@@ -33,16 +33,15 @@ class HistoryService {
   }
 }
   // TODO: Define a getCities method that reads the cities from the searchHistory.json file and returns them as an array of City objects
-  async getCities() {
+  async getCities(): Promise<City[]> {
+    const filePath = './searchHistory.json';
     try {
-      const filePath = await fetch('./searchHistory.json');
-      if (!filePath.ok) {
-        throw new Error('Failed to fetch search history');
-      }
-    const cities = await filePath.json();
-    return cities;
-    } catch (err) {
-      console.error("JSON file cannot be read", err);
+      const data = fs.readFileSync(filePath, 'utf8');
+      const cities = JSON.parse(data);
+      return cities as City[];
+  } catch (err) {
+    console.error("JSON file cannot be read", err);
+    return [];
   }
   }
   // TODO Define an addCity method that adds a city to the searchHistory.json file
