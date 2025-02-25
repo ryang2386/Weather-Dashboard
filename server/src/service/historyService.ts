@@ -13,13 +13,15 @@ class City {
 // TODO: Complete the HistoryService class
 class HistoryService {
   // TODO: Define a read method that reads from the searchHistory.json file
-  private async read() {
-    const filePath = './searchHistory.json';
+  private async read(filePath: string) {
+    // const filePath = './searchHistory.json';
     try {
       const data = fs.readFileSync(filePath, 'utf8');
-      return JSON.parse(data);
+      const cities: City[] = JSON.parse(data);
+      return cities;
     } catch (err) {
       console.error('Failed to read searchHistory.json', err);
+      return [];
   }
 }
   // TODO: Define a write method that writes the updated cities array to the searchHistory.json file
@@ -36,9 +38,9 @@ class HistoryService {
   async getCities(): Promise<City[]> {
     const filePath = './searchHistory.json';
     try {
-      const data = fs.readFileSync(filePath, 'utf8');
-      const cities = JSON.parse(data);
-      return cities as City[];
+      const cities: City[] = await this.read(filePath);
+      // const cities = JSON.parse(data);
+      return cities;
   } catch (err) {
     console.error("JSON file cannot be read", err);
     return [];
@@ -46,7 +48,16 @@ class HistoryService {
   }
   // TODO Define an addCity method that adds a city to the searchHistory.json file
   async addCity(city: string) {
-    
+    const filePath = './searchHistory.json';
+    try {
+      const data = fs.readFileSync(filePath, 'utf8');
+      const cities: City[] = JSON.parse(data);
+      const newCity = new City(city, cities.length.toString());
+      cities.push(newCity);
+      await this.write(cities);
+    } catch (err) {
+      console.error('Failed to add city to searchHistory.json', err);
+    }
   }
   // * BONUS TODO: Define a removeCity method that removes a city from the searchHistory.json file
   async removeCity(id: string) {}
