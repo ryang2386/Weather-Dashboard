@@ -48,7 +48,10 @@ class WeatherService {
     return { lat, lon };
   }
   // TODO: Create buildGeocodeQuery method
-  private buildGeocodeQuery(): string {}
+  private buildGeocodeQuery(): string {
+    const query = `${this.baseURL}/geo/1.0/direct?q=${this.cityName}&limit=10&appid=${this.apiKey}`;
+    return query;
+  }
   // TODO: Create buildWeatherQuery method
   private buildWeatherQuery(coordinates: Coordinates): string {}
   // TODO: Create fetchAndDestructureLocationData method
