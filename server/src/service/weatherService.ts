@@ -27,9 +27,9 @@ class Weather {
 // TODO: Complete the WeatherService class
 class WeatherService {
   // TODO: Define the baseURL, API key, and city name properties
-  private baseURL: string;
-  private apiKey: string;
-  private cityName: string;
+  baseURL: string;
+  apiKey: string;
+  cityName: string;
 
   constructor(baseURL: string, apiKey: string, cityName: string) {
     this.baseURL = baseURL;
