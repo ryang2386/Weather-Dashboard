@@ -87,7 +87,8 @@ class WeatherService {
   }
   // TODO: Complete buildForecastArray method
   private buildForecastArray(currentWeather: Weather, weatherData: any[]) {
-    // const forecastArray: Weather[] = [];
+    const forecastArray: Weather[] = [];
+    forecastArray.push(currentWeather);
     const newWeather = weatherData.map((data) => {
       new Weather ( data.main.temp, 
         data.main.pressure, 
