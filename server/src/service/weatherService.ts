@@ -9,7 +9,19 @@ interface Coordinates {
 
 // TODO: Define a class for the Weather object
 class Weather {
+  temperature: number;
+  pressure: number;
+  humidity: number;
+  tempMin: number;
+  tempMax: number;
 
+  constructor(temperature: number, pressure: number, humidity: number, tempMin: number, tempMax: number) {
+    this.temperature = temperature;
+    this.pressure = pressure;
+    this.humidity = humidity;
+    this.tempMin = tempMin;
+    this.tempMax = tempMax;
+  }
 }
 
 // TODO: Complete the WeatherService class
