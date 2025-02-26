@@ -70,10 +70,13 @@ class WeatherService {
     const query = this.buildWeatherQuery(coordinates);
     const response = await fetch(query);
     const weatherData = await response.json();
+    this.parseCurrentWeather(weatherData);
     return weatherData;
   }
   // TODO: Build parseCurrentWeather method
-  private parseCurrentWeather(response: any) {}
+  private parseCurrentWeather(response: any) {
+    
+  }
   // TODO: Complete buildForecastArray method
   private buildForecastArray(currentWeather: Weather, weatherData: any[]) {}
   // TODO: Complete getWeatherForCity method
