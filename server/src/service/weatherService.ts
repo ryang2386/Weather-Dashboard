@@ -99,7 +99,9 @@ class WeatherService {
   }
   // TODO: Complete getWeatherForCity method
   async getWeatherForCity(city: string) {
-
+    const coordinates = await this.fetchAndDestructureLocationData();
+    const weatherData = await this.fetchWeatherData(coordinates);
+    return weatherData;
   }
 }
 
