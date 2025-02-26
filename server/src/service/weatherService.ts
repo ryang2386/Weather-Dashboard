@@ -79,15 +79,23 @@ class WeatherService {
       response.list[0].main.temp,
       response.list[0].main.pressure,
       response.list[0].main.humidity,
-      response.list[0].main.tempMin,
-      response.list[0].main.tempMax
+      response.list[0].main.temp_min,
+      response.list[0].main.temp_max
     );
     this.buildForecastArray(currentWeather, response.list);
     return currentWeather;
   }
   // TODO: Complete buildForecastArray method
   private buildForecastArray(currentWeather: Weather, weatherData: any[]) {
-
+    // const forecastArray: Weather[] = [];
+    const newWeather = weatherData.map((data) => {
+      new Weather ( data.main.temp, 
+        data.main.pressure, 
+        data.main.humidity, 
+        data.main.temp_min, 
+        data.main.temp_max);
+    });
+    return newWeather;
   }
   // TODO: Complete getWeatherForCity method
   async getWeatherForCity(city: string) {
