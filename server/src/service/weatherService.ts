@@ -45,6 +45,7 @@ class WeatherService {
   // TODO: Create destructureLocationData method
   private destructureLocationData(locationData: Coordinates): Coordinates {
     const { lat, lon } = locationData;
+    this.buildWeatherQuery({ lat, lon });
     return { lat, lon };
   }
   // TODO: Create buildGeocodeQuery method
@@ -53,7 +54,10 @@ class WeatherService {
     return query;
   }
   // TODO: Create buildWeatherQuery method
-  private buildWeatherQuery(coordinates: Coordinates): string {}
+  private buildWeatherQuery(coordinates: Coordinates): string {
+    const query = `${this.baseURL}/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${this.apiKey}`;
+    return query;
+  }
   // TODO: Create fetchAndDestructureLocationData method
   private async fetchAndDestructureLocationData() {}
   // TODO: Create fetchWeatherData method
