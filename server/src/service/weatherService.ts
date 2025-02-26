@@ -82,10 +82,13 @@ class WeatherService {
       response.list[0].main.tempMin,
       response.list[0].main.tempMax
     );
+    this.buildForecastArray(currentWeather, response.list);
     return currentWeather;
   }
   // TODO: Complete buildForecastArray method
-  private buildForecastArray(currentWeather: Weather, weatherData: any[]) {}
+  private buildForecastArray(currentWeather: Weather, weatherData: any[]) {
+
+  }
   // TODO: Complete getWeatherForCity method
   async getWeatherForCity(city: string) {
 
