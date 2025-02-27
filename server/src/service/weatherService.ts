@@ -107,7 +107,8 @@ class WeatherService {
 }
 
 const baseURL = 'https://api.openweathermap.org';
-const apiKey = '878kH5FoEoDvBj07AbFhELJDKFdii4ob3enbeYwh';
+const apiKey = process.env.API_KEY ||
+  'your_api_key_here';
 const cityName = 'city_name_here';
 
 export default new WeatherService(baseURL, apiKey, cityName);
